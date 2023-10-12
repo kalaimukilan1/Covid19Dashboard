@@ -5,6 +5,7 @@ import Loader from 'react-loader-spinner'
 
 import Header from '../Header'
 import StateTableItem from '../StateTableItem'
+import SearchResultItem from '../SearchResultItem'
 
 import './index.css'
 
@@ -166,6 +167,7 @@ class Home extends Component {
   state = {
     dataList: [],
     apiStatus: apiStatusConstants.initial,
+    searchValue: null,
   }
 
   componentDidMount() {
@@ -291,6 +293,37 @@ class Home extends Component {
     )
   }
 
+  onChangeSearchValue = event => {
+    if (event.target.value === '') {
+      this.setState({searchValue: null})
+    } else {
+      this.setState({searchValue: event.target.value.toLowerCase()})
+    }
+  }
+
+  renderSearchResult = () => {
+    const {searchValue, dataList} = this.state
+
+    const filteredDataList = dataList.filter(state =>
+      state.name.toLowerCase().includes(searchValue),
+    )
+
+    console.log(filteredDataList)
+    if (filteredDataList.length > 0) {
+      return (
+        <ul className="search-result-ul-container">
+          {filteredDataList.map(eachItem => (
+            <SearchResultItem
+              key={eachItem.stateCode}
+              searchDetails={eachItem}
+            />
+          ))}
+        </ul>
+      )
+    }
+    return null
+  }
+
   renderSuccessView = () => {
     const {dataList} = this.state
     console.log(dataList)
@@ -305,9 +338,10 @@ class Home extends Component {
               type="search"
               className="search-bar"
               placeholder="Enter the state"
+              onChange={this.onChangeSearchValue}
             />
           </div>
-
+          {this.renderSearchResult()}
           {this.stateWiseDataTable()}
         </div>
       </div>
