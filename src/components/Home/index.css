@@ -1,0 +1,142 @@
+.home-route-container {
+  background-color: #161625;
+  min-height: 100vh;
+  padding: 10px;
+}
+
+.search-bar-container {
+  margin-top: 45px;
+  height: 72px;
+  background-color: #1e1e30;
+  width: 57%;
+  border-radius: 5px;
+  display: flex;
+  align-items: center;
+}
+
+@media screen and (max-width: 400px) {
+  .search-bar-container {
+    height: 50px;
+    width: 90%;
+  }
+}
+
+.search-icon {
+  margin-left: 3%;
+  margin-right: 3%;
+  color: #64748b;
+}
+
+.search-bar {
+  height: 72px;
+  width: 94%;
+  background-color: transparent;
+  border-style: none;
+  outline: none;
+  color: #64748b;
+  font-size: 16px;
+  font-weight: 400;
+  font-family: 'Roboto';
+}
+
+@media screen and (max-width: 400px) {
+  .search-bar {
+    height: 50px;
+    width: 93%;
+  }
+}
+
+.home-route-loader-container {
+  background-color: #161625;
+  height: 100vh;
+  padding: 10px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.state-wise-data-container {
+  width: 85%;
+  min-height: 300px;
+  border: 1px solid #475569;
+  border-radius: 10px;
+  margin-top: 100px;
+  background-color: #1e1e30;
+}
+
+@media screen and (max-width: 768px) {
+  .state-wise-data-container {
+    overflow: auto;
+  }
+}
+
+.state-wise-data-header-container {
+  padding-left: 20px;
+  padding-right: 20px;
+  height: 60px;
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+.states-ut-header-container {
+  width: 25%;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+@media screen and (max-width: 768px) {
+  .states-ut-header-container {
+    min-width: 150px;
+    margin-right: 35px;
+  }
+}
+
+.state-wise-data-states-and-ut-header {
+  color: #f8fafc;
+  font-size: 14px;
+  font-weight: 500;
+  font-family: 'Roboto';
+  margin-right: 10px;
+}
+
+.state-wise-sort-button {
+  background-color: transparent;
+  border-style: none;
+  outline: none;
+  height: 15px;
+}
+
+.state-wise-sort-icon {
+  color: #475569;
+}
+
+.state-wise-data-header {
+  color: #f8fafc;
+  font-size: 14px;
+  font-weight: 500;
+  font-family: 'Roboto';
+  width: 15%;
+  text-align: end;
+}
+
+@media screen and (max-width: 768px) {
+  .state-wise-data-header {
+    min-width: 60px;
+    margin-right: 20px;
+  }
+}
+
+.states-data-horizontal-line {
+  margin-top: 0px;
+  background-color: #475569;
+  border-style: none;
+  height: 1px;
+}
+
+.state-data-unOrder-list {
+  list-style-type: none;
+  padding-left: 0px;
+}

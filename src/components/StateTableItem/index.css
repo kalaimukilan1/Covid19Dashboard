@@ -1,0 +1,57 @@
+.state-item-list {
+  padding-left: 20px;
+  padding-right: 20px;
+  height: 60px;
+  width: 100%;
+  margin-top: 20px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+.state-item-states-and-ut-para {
+  font-size: 13px;
+  font-weight: 400;
+  font-family: 'Roboto';
+  color: #f1f5f9;
+  width: 25%;
+}
+
+@media screen and (max-width: 768px) {
+  .state-item-states-and-ut-para {
+    min-width: 150px;
+    margin-right: 35px;
+  }
+}
+
+.state-item-para {
+  font-size: 12px;
+  font-weight: 400;
+  font-family: 'Roboto';
+  color: #f1f5f9;
+  width: 15%;
+  text-align: end;
+}
+
+@media screen and (max-width: 768px) {
+  .state-item-para {
+    min-width: 60px;
+    margin-right: 20px;
+  }
+}
+
+.confirmed-count {
+  color: #ff073a;
+}
+.active-count {
+  color: #007bff;
+}
+.recovered-count {
+  color: #28a745;
+}
+.deceased-count {
+  color: #6c757d;
+}
+.population-count {
+  color: #94a3b8;
+}
