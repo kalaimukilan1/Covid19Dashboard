@@ -6,6 +6,7 @@ import Loader from 'react-loader-spinner'
 import Header from '../Header'
 import StateTableItem from '../StateTableItem'
 import SearchResultItem from '../SearchResultItem'
+import CaseStatusTab from '../CaseStatusTab'
 
 import './index.css'
 
@@ -156,6 +157,25 @@ const statesList = [
   },
 ]
 
+const statusTabList = [
+  {
+    tabId: 'confirmed',
+    tabDisplayText: 'Confirmed',
+  },
+  {
+    tabId: 'active',
+    tabDisplayText: 'Active',
+  },
+  {
+    tabId: 'recovered',
+    tabDisplayText: 'Recovered',
+  },
+  {
+    tabId: 'deceased',
+    tabDisplayText: 'Deceased',
+  },
+]
+
 const apiStatusConstants = {
   initial: 'INITIAL',
   inProgress: 'INPROGRESS',
@@ -301,6 +321,27 @@ class Home extends Component {
     }
   }
 
+  renderCaseStatusTab = () => {
+    const countDetailsConstants = {
+      confirmed: '34285612',
+      active: '165803',
+      recovered: '33661339',
+      deceased: '458470',
+    }
+
+    return (
+      <div>
+        {statusTabList.map(eachTab => (
+          <CaseStatusTab
+            key={eachTab.tabId}
+            tabDetails={eachTab}
+            countDetails={countDetailsConstants}
+          />
+        ))}
+      </div>
+    )
+  }
+
   renderSearchResult = () => {
     const {searchValue, dataList} = this.state
 
@@ -308,7 +349,6 @@ class Home extends Component {
       state.name.toLowerCase().includes(searchValue),
     )
 
-    console.log(filteredDataList)
     if (filteredDataList.length > 0) {
       return (
         <ul className="search-result-ul-container">
@@ -324,29 +364,25 @@ class Home extends Component {
     return null
   }
 
-  renderSuccessView = () => {
-    const {dataList} = this.state
-    console.log(dataList)
-
-    return (
-      <div>
-        <Header />
-        <div className="home-route-container">
-          <div className="search-bar-container">
-            <BsSearch className="search-icon" />
-            <input
-              type="search"
-              className="search-bar"
-              placeholder="Enter the state"
-              onChange={this.onChangeSearchValue}
-            />
-          </div>
-          {this.renderSearchResult()}
-          {this.stateWiseDataTable()}
+  renderSuccessView = () => (
+    <div>
+      <Header />
+      <div className="home-route-container">
+        <div className="search-bar-container">
+          <BsSearch className="search-icon" />
+          <input
+            type="search"
+            className="search-bar"
+            placeholder="Enter the state"
+            onChange={this.onChangeSearchValue}
+          />
         </div>
+        {this.renderSearchResult()}
+        {this.renderCaseStatusTab()}
+        {this.stateWiseDataTable()}
       </div>
-    )
-  }
+    </div>
+  )
 
   renderHomeRoute = () => {
     const {apiStatus} = this.state
