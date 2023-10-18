@@ -1,0 +1,95 @@
+.status-tab-card {
+  height: 160px;
+  width: 28%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  margin: 10px;
+  margin-bottom: 0px;
+}
+
+@media screen and (min-width: 450px) {
+  .status-tab-card {
+    width: 40%;
+  }
+}
+
+@media screen and (min-width: 900px) {
+  .status-tab-card {
+    height: 232px;
+    width: 22%;
+  }
+}
+
+.status-tab-button {
+  width: 100%;
+  border-style: none;
+  border-radius: 5px;
+  background-color: transparent;
+  outline: none;
+}
+
+.status-tab-para {
+  font-size: 16px;
+  font-weight: 500;
+  font-family: 'Roboto';
+}
+
+.status-tab-image {
+  height: 38px;
+  width: 38px;
+}
+
+.status-tab-count {
+  font-size: 24px;
+  font-weight: 500;
+  font-family: 'Roboto';
+}
+
+@media screen and (max-width: 500px) {
+  .status-tab-para {
+    font-size: 12px;
+  }
+
+  .status-tab-image {
+    height: 24px;
+    width: 24px;
+  }
+
+  .status-tab-count {
+    font-size: 16px;
+  }
+}
+
+.confirmed-tab {
+  color: #ff073a;
+}
+
+.confirmed-tab-background {
+  background-color: #331427;
+}
+
+.active-tab {
+  color: #007bff;
+}
+
+.active-tab-background {
+  background-color: #132240;
+}
+
+.recovered-tab {
+  color: #28a745;
+}
+
+.recovered-tab-background {
+  background-color: #182829;
+}
+
+.deceased-tab {
+  color: #6c757d;
+}
+
+.deceased-tab-background {
+  background-color: #212230;
+}

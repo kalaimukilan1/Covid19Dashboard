@@ -7,6 +7,7 @@ import Header from '../Header'
 import StateTableItem from '../StateTableItem'
 import SearchResultItem from '../SearchResultItem'
 import CaseStatusTab from '../CaseStatusTab'
+import Footer from '../Footer'
 
 import './index.css'
 
@@ -202,13 +203,11 @@ class Home extends Component {
     const response = await fetch(url)
     const responseData = await response.json()
 
-    console.log(responseData)
-
     if (response.ok === true) {
       const listFormattedData = this.convertObjectsDataIntoListItemsUsingForInMethod(
         responseData,
       )
-
+      console.log(listFormattedData)
       this.setState({
         dataList: listFormattedData,
         apiStatus: apiStatusConstants.success,
@@ -226,7 +225,7 @@ class Home extends Component {
 
     keyNames.forEach(keyName => {
       if (data[keyName]) {
-        const {total} = data[keyName]
+        const {total, districts} = data[keyName]
         // if the state's covid data is available we will store it or we will store 0
         const confirmed = total.confirmed ? total.confirmed : 0
         const deceased = total.deceased ? total.deceased : 0
@@ -248,6 +247,7 @@ class Home extends Component {
             tested,
             population,
             active: confirmed - (deceased + recovered),
+            districts,
           })
         }
       }
@@ -255,17 +255,29 @@ class Home extends Component {
     return resultList
   }
 
-  renderLoader = () => (
-    <div>
-      <Header />
-      <div
-        data-testid="homeRouteLoader"
-        className="home-route-loader-container"
-      >
-        <Loader type="TailSpin" color="#007BFF" height="60px" width="60px" />
-      </div>
-    </div>
-  )
+  onChangeSearchValue = event => {
+    if (event.target.value === '') {
+      this.setState({searchValue: null})
+    } else {
+      this.setState({searchValue: event.target.value.toLowerCase()})
+    }
+  }
+
+  onClickSortAscending = () => {
+    const {dataList} = this.state
+    const sortedDataList = dataList.sort((a, b) =>
+      a.stateCode > b.stateCode ? 1 : -1,
+    )
+    this.setState({dataList: sortedDataList})
+  }
+
+  onClickSortDescending = () => {
+    const {dataList} = this.state
+    const sortDescDataList = dataList.sort((a, b) =>
+      a.stateCode > b.stateCode ? -1 : 1,
+    )
+    this.setState({dataList: sortDescDataList})
+  }
 
   stateWiseDataTable = () => {
     const {dataList} = this.state
@@ -281,6 +293,7 @@ class Home extends Component {
               type="button"
               data-testid="ascendingSort"
               className="state-wise-sort-button"
+              onClick={this.onClickSortAscending}
             >
               <FcGenericSortingAsc className="state-wise-sort-icon" />
             </button>
@@ -288,6 +301,7 @@ class Home extends Component {
               type="button"
               data-testid="descendingSort"
               className="state-wise-sort-button"
+              onClick={this.onClickSortDescending}
             >
               <FcGenericSortingDesc className="state-wise-sort-icon" />
             </button>
@@ -313,24 +327,16 @@ class Home extends Component {
     )
   }
 
-  onChangeSearchValue = event => {
-    if (event.target.value === '') {
-      this.setState({searchValue: null})
-    } else {
-      this.setState({searchValue: event.target.value.toLowerCase()})
-    }
-  }
-
   renderCaseStatusTab = () => {
     const countDetailsConstants = {
-      confirmed: '34285612',
-      active: '165803',
-      recovered: '33661339',
-      deceased: '458470',
+      confirmed: 34285612,
+      active: 165803,
+      recovered: 33661339,
+      deceased: 458470,
     }
 
     return (
-      <div>
+      <div className="status-tab-container">
         {statusTabList.map(eachTab => (
           <CaseStatusTab
             key={eachTab.tabId}
@@ -364,10 +370,23 @@ class Home extends Component {
     return null
   }
 
-  renderSuccessView = () => (
+  renderLoader = () => (
     <div>
       <Header />
+      <div
+        data-testid="homeRouteLoader"
+        className="home-route-loader-container"
+      >
+        <Loader type="TailSpin" color="#007BFF" height="60px" width="60px" />
+      </div>
+    </div>
+  )
+
+  renderSuccessView = () => {
+    const {dataList} = this.state
+    return (
       <div className="home-route-container">
+        <Header />
         <div className="search-bar-container">
           <BsSearch className="search-icon" />
           <input
@@ -377,12 +396,13 @@ class Home extends Component {
             onChange={this.onChangeSearchValue}
           />
         </div>
-        {this.renderSearchResult()}
+        {this.renderSearchResult(dataList)}
         {this.renderCaseStatusTab()}
-        {this.stateWiseDataTable()}
+        {this.stateWiseDataTable(dataList)}
+        <Footer />
       </div>
-    </div>
-  )
+    )
+  }
 
   renderHomeRoute = () => {
     const {apiStatus} = this.state

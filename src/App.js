@@ -1,7 +1,9 @@
+import {Component} from 'react'
 import {Route, Switch} from 'react-router-dom'
 
 import About from './components/About'
 import Home from './components/Home'
+import SpecificState from './components/SpecificState'
 import './App.css'
 
 const statesList = [
@@ -151,11 +153,16 @@ const statesList = [
   },
 ]
 
-const App = () => (
-  <Switch>
-    <Route exact path="/" component={Home} />
-    <Route exact path="/about" component={About} />
-  </Switch>
-)
+class App extends Component {
+  render() {
+    return (
+      <Switch>
+        <Route exact path="/" component={Home} />
+        <Route exact path="/about" component={About} />
+        <Route exact path="/state/:id" component={SpecificState} />
+      </Switch>
+    )
+  }
+}
 
 export default App

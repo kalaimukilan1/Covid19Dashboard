@@ -1,0 +1,114 @@
+.specific-bg-state-container {
+  background-color: #161625;
+  min-height: 100vh;
+}
+
+.specific-state-container {
+  padding-left: 10%;
+  padding-right: 10%;
+}
+
+.specific-state-route-loader-container {
+  background-color: #161625;
+  height: 100vh;
+  padding: 10px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.state-name-and-tested-container {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-top: 30px;
+}
+
+.state-name {
+  font-size: 32px;
+  font-weight: 500;
+  font-family: 'Roboto';
+  color: #0ea5e9;
+}
+
+.tested-count-para {
+  color: #94a3b8;
+  font-size: 16px;
+  width: 500;
+  text-align: end;
+}
+
+.tested-count-span {
+  color: #94a3b8;
+  font-size: 24px;
+  width: 500;
+  text-align: end;
+}
+
+.top-district-heading {
+  font-size: 32x;
+  font-weight: 500;
+  margin-top: 40px;
+}
+
+@media screen and (max-width: 400px) {
+  .top-district-heading {
+    font-size: 24px;
+  }
+}
+
+.district-ul-container {
+  list-style-type: none;
+  padding-left: 0px;
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.district-list-item {
+  display: flex;
+  align-items: center;
+  width: 250px;
+  margin-right: 20px;
+}
+
+.district-cases-count {
+  font-size: 24px;
+  color: #94a3b8;
+  width: 90px;
+}
+
+@media screen and (max-width: 400) {
+  .district-cases-count {
+    font-size: 16px;
+    width: 70px;
+  }
+}
+
+.district-name {
+  font-size: 16px;
+  color: #94a3b8;
+  margin-left: 10px;
+}
+
+@media screen and (max-width: 400) {
+  .district-name {
+    font-size: 16px;
+  }
+}
+
+.confirmed {
+  color: #ff073a;
+}
+
+.active {
+  color: #007bff;
+}
+
+.recovered {
+  color: #28a745;
+}
+
+.deceased {
+  color: #6c757d;
+}
