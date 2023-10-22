@@ -23,6 +23,11 @@
   justify-content: space-between;
 }
 
+.covid-19-heading-link {
+  text-decoration: none;
+  outline: none;
+}
+
 .covid19Heading {
   font-family: 'Bree Serif';
   font-size: 20px;

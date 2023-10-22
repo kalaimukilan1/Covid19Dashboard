@@ -1,9 +1,11 @@
 .specific-bg-state-container {
   background-color: #161625;
   min-height: 100vh;
+  width: 100vw;
 }
 
 .specific-state-container {
+  padding: 10px;
   padding-left: 10%;
   padding-right: 10%;
 }
@@ -25,11 +27,36 @@
   margin-top: 30px;
 }
 
+.state-name-container {
+  height: 70px;
+  min-width: 300px;
+  background-color: #132240;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-style: none;
+  border-radius: 50px;
+}
+
+@media screen and (max-width: 600px) {
+  .state-name-container {
+    height: 50px;
+    min-width: 200px;
+  }
+}
+
 .state-name {
   font-size: 32px;
   font-weight: 500;
   font-family: 'Roboto';
   color: #0ea5e9;
+}
+
+@media screen and (max-width: 600px) {
+  .state-name {
+    font-size: 16px;
+    font-weight: 400;
+  }
 }
 
 .tested-count-para {
@@ -39,11 +66,34 @@
   text-align: end;
 }
 
+@media screen and (max-width: 600px) {
+  .tested-count-para {
+    font-size: 12px;
+  }
+}
+
 .tested-count-span {
   color: #94a3b8;
   font-size: 24px;
   width: 500;
   text-align: end;
+}
+
+@media screen and (max-width: 600px) {
+  .tested-count-span {
+    font-size: 16px;
+  }
+}
+
+.last-updated-date {
+  color: #cbd5e1;
+  font-size: 18px;
+}
+
+@media screen and (max-width: 600px) {
+  .last-updated-date {
+    font-size: 12px;
+  }
 }
 
 .top-district-heading {
@@ -111,4 +161,10 @@
 
 .deceased {
   color: #6c757d;
+}
+
+.specif-footer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }

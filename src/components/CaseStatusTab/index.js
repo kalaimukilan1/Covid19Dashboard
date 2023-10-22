@@ -36,14 +36,12 @@ const CaseStatusTab = props => {
         'https://res.cloudinary.com/dkydhvcix/image/upload/v1697180655/check-mark_1_pkiuei.png'
       countValue = confirmed
       tabTextColor = 'confirmed-tab'
-      //   backgroundColor = isSpecificState ? 'confirmed-tab-background' : ''
       break
     case 'active':
       statusImageUrl =
         'https://res.cloudinary.com/dkydhvcix/image/upload/v1697180696/protection_1_vxy2bc.png'
       countValue = active
       tabTextColor = 'active-tab'
-      //   backgroundColor = isSpecificState ? 'active-tab-background' : ''
       break
     case 'recovered':
       statusImageUrl =

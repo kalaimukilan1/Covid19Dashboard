@@ -23,9 +23,11 @@ class Header extends Component {
     return (
       <div className="header-bg-container">
         <div className="header-container">
-          <h1 className="covid19Heading">
-            COVID19<span className="covid19HeadingSpan">INDIA</span>
-          </h1>
+          <Link to="/" className="covid-19-heading-link">
+            <h1 className="covid19Heading">
+              COVID19<span className="covid19HeadingSpan">INDIA</span>
+            </h1>
+          </Link>
           <div className="nav-link-container">
             <Link to="/" className="nav-link">
               Home

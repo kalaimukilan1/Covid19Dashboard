@@ -2,8 +2,9 @@ import {Component} from 'react'
 import Loader from 'react-loader-spinner'
 
 import Header from '../Header'
-import CovidContext from '../../Context/CovidContext'
 import CaseStatusTab from '../CaseStatusTab'
+import Charts from '../Charts'
+import Footer from '../Footer'
 
 import './index.css'
 
@@ -207,7 +208,7 @@ class SpecificState extends Component {
         responseData,
         id,
       )
-      console.log(listFormatData[0])
+
       this.setState({
         stateData: listFormatData[0],
         apiStatus: apiStatusConstants.success,
@@ -259,20 +260,8 @@ class SpecificState extends Component {
     this.setState({activeTab: tabId})
   }
 
-  renderLoadingView = () => (
-    <div>
-      <Header />
-      <div
-        data-testid="stateDetailsLoader"
-        className="specific-state-route-loader-container"
-      >
-        <Loader type="TailSpin" color="#007BFF" height="60px" width="60px" />
-      </div>
-    </div>
-  )
-
   renderCaseStatusTab = countDetails => {
-    const {activeTab} = this.state
+    const {activeTab, isSpecificState} = this.state
     return (
       <div className="status-tab-container">
         {statusTabList.map(eachTab => (
@@ -323,16 +312,16 @@ class SpecificState extends Component {
     const districtListData = this.convertDistrictDataIntoList()
     const {activeTab} = this.state
 
-    const sortedDistrictList = districtListData.sort(
-      (a, b) => b[activeTab] - a[activeTab],
-    )
-    console.log(sortedDistrictList)
+    districtListData.sort((a, b) => b[activeTab] - a[activeTab])
 
     // Use activeTab name as CSS property for giving heading color
     return (
       <div>
         <h1 className={`top-district-heading ${activeTab}`}>Top Districts</h1>
-        <ul className="district-ul-container">
+        <ul
+          className="district-ul-container"
+          data-testid="topDistrictsUnorderedList"
+        >
           {districtListData.map(eachDistrict => {
             if (eachDistrict[activeTab] !== 0) {
               return (
@@ -354,30 +343,78 @@ class SpecificState extends Component {
     )
   }
 
+  getLastUpdatedDate = lastUpdatedDate => {
+    const months = [
+      'January',
+      'February',
+      'March',
+      'April',
+      'May',
+      'June',
+      'July',
+      'August',
+      'September',
+      'October',
+      'November',
+      'December',
+    ]
+
+    const wholeDateStr = new Date(lastUpdatedDate)
+    const dateStr = wholeDateStr.toLocaleDateString()
+    const dateValue = new Date(dateStr)
+
+    const displayDateValue = `Last updated on ${
+      months[dateValue.getMonth()]
+    } ${dateValue.getDate()}th ${dateValue.getFullYear()}`
+
+    return displayDateValue
+  }
+
   renderSuccessView = () => {
     const {stateData, activeTab} = this.state
-    const {name, tested} = stateData
-    console.log(activeTab)
+    const {name, tested, lastUpdatedDate} = stateData
+
+    const displayLastUpdatedDate = this.getLastUpdatedDate(lastUpdatedDate)
 
     return (
       <div className="specific-bg-state-container">
         <Header />
         <div className="specific-state-container">
           <div className="state-name-and-tested-container">
-            <h1 className="state-name">{name}</h1>
+            <div className="state-name-container">
+              <h1 className="state-name">{name}</h1>
+            </div>
+
             <p className="tested-count-para">
               Tested
               <br />
               <span className="tested-count-span">{tested}</span>
             </p>
           </div>
+          <p className="last-updated-date">{displayLastUpdatedDate}</p>
 
           {this.renderCaseStatusTab(stateData)}
           {this.renderTopDistrictList()}
+          <Charts activeTab={activeTab} />
+          <div className="specif-footer">
+            <Footer />
+          </div>
         </div>
       </div>
     )
   }
+
+  renderLoadingView = () => (
+    <div>
+      <Header />
+      <div
+        data-testid="stateDetailsLoader"
+        className="specific-state-route-loader-container"
+      >
+        <Loader type="TailSpin" color="#007BFF" height="60px" width="60px" />
+      </div>
+    </div>
+  )
 
   renderSpecificStateRoute = () => {
     const {apiStatus} = this.state

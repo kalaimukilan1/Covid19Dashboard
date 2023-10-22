@@ -1,0 +1,67 @@
+@media screen and (max-width: 1100px) {
+  .bar-chart-container {
+    display: none;
+  }
+}
+@media screen and (min-width: 599px) {
+  .sm-bar-chart-container {
+    display: none;
+  }
+}
+
+@media screen and (max-width: 599px) {
+  .lg-bar-chart-container {
+    display: none;
+  }
+}
+
+@media screen and (min-width: 1101px) {
+  .lg-bar-chart-container {
+    display: none;
+  }
+}
+
+.speared-trend-title {
+  font-size: 48px;
+  color: #cbd5e1;
+  font-weight: 500;
+  margin-top: 50px;
+}
+
+.lineChart-container {
+  height: 300px;
+  width: 1000px;
+  color: #ff073a;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  margin-top: 40px;
+  border-style: none;
+  border-radius: 10px;
+  overflow-x: auto;
+}
+
+.sm-spread-trends-list-container {
+  list-style-type: none;
+  padding-left: 0px;
+}
+
+.confirmed-background {
+  background-color: #331427;
+}
+
+.active-background {
+  background-color: #132240;
+}
+
+.recovered-background {
+  background-color: #182829;
+}
+
+.deceased-background {
+  background-color: #212230;
+}
+
+.tested-background {
+  background-color: #230f41;
+}
