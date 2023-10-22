@@ -262,6 +262,7 @@ class SpecificState extends Component {
 
   renderCaseStatusTab = countDetails => {
     const {activeTab, isSpecificState} = this.state
+    console.log(isSpecificState)
     return (
       <div className="status-tab-container">
         {statusTabList.map(eachTab => (

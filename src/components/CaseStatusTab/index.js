@@ -20,6 +20,8 @@ const CaseStatusTab = props => {
       ? `stateSpecific${tabDisplayText}CasesContainer`
       : `countryWide${tabDisplayText}Cases`
 
+  console.log(containerTestId)
+
   const pictureAltText =
     isSpecificState === true
       ? `state specific ${tabId} cases pic`

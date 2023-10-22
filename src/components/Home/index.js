@@ -207,13 +207,10 @@ class Home extends Component {
       const listFormattedData = this.convertObjectsDataIntoListItemsUsingForInMethod(
         responseData,
       )
-      console.log(listFormattedData)
       this.setState({
         dataList: listFormattedData,
         apiStatus: apiStatusConstants.success,
       })
-    } else {
-      this.setState({apiStatus: apiStatusConstants.failure})
     }
   }
 

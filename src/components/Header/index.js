@@ -30,10 +30,14 @@ class Header extends Component {
           </Link>
           <div className="nav-link-container">
             <Link to="/" className="nav-link">
-              Home
+              <button type="button" className="nav-link-button">
+                Home
+              </button>
             </Link>
             <Link to="/about" className="nav-link">
-              About
+              <button type="button" className="nav-link-button">
+                About
+              </button>
             </Link>
           </div>
 
@@ -52,10 +56,14 @@ class Header extends Component {
         <div className={`nav-link-sm-container ${smNavLink}`}>
           <div>
             <Link to="/" className="nav-link nav-link-sm ">
-              Home
+              <button type="button" className="nav-link-button">
+                Home
+              </button>
             </Link>
             <Link to="/about" className="nav-link nav-link-sm ">
-              About
+              <button type="button" className="nav-link-button">
+                About
+              </button>
             </Link>
           </div>
 

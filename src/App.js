@@ -1,9 +1,10 @@
 import {Component} from 'react'
-import {Route, Switch} from 'react-router-dom'
+import {Route, Switch, Redirect} from 'react-router-dom'
 
 import About from './components/About'
 import Home from './components/Home'
 import SpecificState from './components/SpecificState'
+import NotFound from './components/NotFound'
 import './App.css'
 
 const statesList = [
@@ -160,6 +161,8 @@ class App extends Component {
         <Route exact path="/" component={Home} />
         <Route exact path="/about" component={About} />
         <Route exact path="/state/:id" component={SpecificState} />
+        <Route exact path="/not-found" component={NotFound} />
+        <Redirect to="/not-found" />
       </Switch>
     )
   }
