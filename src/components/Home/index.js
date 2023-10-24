@@ -379,27 +379,24 @@ class Home extends Component {
     </div>
   )
 
-  renderSuccessView = () => {
-    const {dataList} = this.state
-    return (
-      <div className="home-route-container">
-        <Header />
-        <div className="search-bar-container">
-          <BsSearch className="search-icon" />
-          <input
-            type="search"
-            className="search-bar"
-            placeholder="Enter the state"
-            onChange={this.onChangeSearchValue}
-          />
-        </div>
-        {this.renderSearchResult(dataList)}
-        {this.renderCaseStatusTab()}
-        {this.stateWiseDataTable(dataList)}
-        <Footer />
+  renderSuccessView = () => (
+    <div className="home-route-container">
+      <Header />
+      <div className="search-bar-container">
+        <BsSearch className="search-icon" />
+        <input
+          type="search"
+          className="search-bar"
+          placeholder="Enter the state"
+          onChange={this.onChangeSearchValue}
+        />
       </div>
-    )
-  }
+      {this.renderSearchResult()}
+      {this.renderCaseStatusTab()}
+      {this.stateWiseDataTable()}
+      <Footer />
+    </div>
+  )
 
   renderHomeRoute = () => {
     const {apiStatus} = this.state
