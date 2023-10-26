@@ -20,8 +20,6 @@ const CaseStatusTab = props => {
       ? `stateSpecific${tabDisplayText}CasesContainer`
       : `countryWide${tabDisplayText}Cases`
 
-  console.log(containerTestId)
-
   const pictureAltText =
     isSpecificState === true
       ? `state specific ${tabId} cases pic`
@@ -62,7 +60,7 @@ const CaseStatusTab = props => {
   }
 
   return (
-    <div data-testid={containerTestId} className="status-tab-card">
+    <li testid={containerTestId} className="status-tab-card">
       <button
         type="button"
         className={`status-tab-button ${tabTextColor} ${backgroundColor}`}
@@ -76,7 +74,7 @@ const CaseStatusTab = props => {
         />
         <p className="status-tab-count">{countValue}</p>
       </button>
-    </div>
+    </li>
   )
 }
 

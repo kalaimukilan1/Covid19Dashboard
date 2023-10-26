@@ -213,7 +213,7 @@ class Chats extends Component {
     return (
       <div
         className={`lineChart-container ${dataKeyVal}-background `}
-        data-testid="lineChartsContainer"
+        testid="lineChartsContainer"
       >
         <LineChart height={260} width={950} data={timelineData}>
           <XAxis dataKey="date" stroke={strokeColor} />
@@ -245,7 +245,7 @@ class Chats extends Component {
 
   renderLoadingView = () => (
     <div
-      data-testid="timelinesDataLoader"
+      testid="timelinesDataLoader"
       className="specific-state-route-loader-container"
     >
       <Loader type="TailSpin" color="#007BFF" height="60px" width="60px" />

@@ -7,6 +7,8 @@
   justify-content: center;
   margin: 10px;
   margin-bottom: 0px;
+  list-style-type: none;
+  padding-left: 0px;
 }
 
 @media screen and (min-width: 450px) {

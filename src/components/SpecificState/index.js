@@ -227,7 +227,7 @@ class SpecificState extends Component {
     keyNames.find(keyName => {
       if (keyName === id) {
         const {total, districts, meta} = data[keyName]
-        // if the state's covid data is available we will store it or we will store 0
+        // if the specific state's covid data is available we will store it or we will store 0
         const confirmed = total.confirmed ? total.confirmed : 0
         const deceased = total.deceased ? total.deceased : 0
         const recovered = total.recovered ? total.recovered : 0
@@ -264,7 +264,7 @@ class SpecificState extends Component {
     const {activeTab, isSpecificState} = this.state
     console.log(isSpecificState)
     return (
-      <div className="status-tab-container">
+      <ul className="status-tab-container">
         {statusTabList.map(eachTab => (
           <CaseStatusTab
             key={eachTab.tabId}
@@ -275,7 +275,7 @@ class SpecificState extends Component {
             isSpecificState
           />
         ))}
-      </div>
+      </ul>
     )
   }
 
@@ -315,14 +315,14 @@ class SpecificState extends Component {
 
     districtListData.sort((a, b) => b[activeTab] - a[activeTab])
 
-    // Use activeTab name as CSS property for giving heading color
+    // Used activeTab name as CSS property for giving heading color
     return (
       <div>
-        <h1 className={`top-district-heading ${activeTab}`}>Top Districts</h1>
         <ul
           className="district-ul-container"
-          data-testid="topDistrictsUnorderedList"
+          testid="topDistrictsUnorderedList"
         >
+          <h1 className={`top-district-heading ${activeTab}`}>Top Districts</h1>
           {districtListData.map(eachDistrict => {
             if (eachDistrict[activeTab] !== 0) {
               return (
@@ -385,12 +385,11 @@ class SpecificState extends Component {
             <div className="state-name-container">
               <h1 className="state-name">{name}</h1>
             </div>
-
-            <p className="tested-count-para">
-              Tested
+            <div>
+              <p className="tested-count-para">Tested</p>
               <br />
               <span className="tested-count-span">{tested}</span>
-            </p>
+            </div>
           </div>
           <p className="last-updated-date">{displayLastUpdatedDate}</p>
 
@@ -409,7 +408,7 @@ class SpecificState extends Component {
     <div>
       <Header />
       <div
-        data-testid="stateDetailsLoader"
+        testid="stateDetailsLoader"
         className="specific-state-route-loader-container"
       >
         <Loader type="TailSpin" color="#007BFF" height="60px" width="60px" />
@@ -424,8 +423,6 @@ class SpecificState extends Component {
         return this.renderLoadingView()
       case apiStatusConstants.success:
         return this.renderSuccessView()
-      case apiStatusConstants.failure:
-        return ''
       default:
         return null
     }

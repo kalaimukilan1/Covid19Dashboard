@@ -280,7 +280,7 @@ class Home extends Component {
     const {dataList} = this.state
     return (
       <div
-        data-testid="stateWiseCovidDataTable"
+        testid="stateWiseCovidDataTable"
         className="state-wise-data-container"
       >
         <div className="state-wise-data-header-container">
@@ -288,7 +288,7 @@ class Home extends Component {
             <p className="state-wise-data-states-and-ut-header">States/UT</p>
             <button
               type="button"
-              data-testid="ascendingSort"
+              testid="ascendingSort"
               className="state-wise-sort-button"
               onClick={this.onClickSortAscending}
             >
@@ -296,7 +296,7 @@ class Home extends Component {
             </button>
             <button
               type="button"
-              data-testid="descendingSort"
+              testid="descendingSort"
               className="state-wise-sort-button"
               onClick={this.onClickSortDescending}
             >
@@ -354,7 +354,10 @@ class Home extends Component {
 
     if (filteredDataList.length > 0) {
       return (
-        <ul className="search-result-ul-container">
+        <ul
+          className="search-result-ul-container"
+          testid="searchResultsUnorderedList"
+        >
           {filteredDataList.map(eachItem => (
             <SearchResultItem
               key={eachItem.stateCode}
@@ -370,10 +373,7 @@ class Home extends Component {
   renderLoader = () => (
     <div>
       <Header />
-      <div
-        data-testid="homeRouteLoader"
-        className="home-route-loader-container"
-      >
+      <div testid="homeRouteLoader" className="home-route-loader-container">
         <Loader type="TailSpin" color="#007BFF" height="60px" width="60px" />
       </div>
     </div>
