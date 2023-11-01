@@ -1,4 +1,5 @@
 import {Component} from 'react'
+
 import {BsSearch} from 'react-icons/bs'
 import {FcGenericSortingAsc, FcGenericSortingDesc} from 'react-icons/fc'
 import Loader from 'react-loader-spinner'
@@ -203,14 +204,27 @@ class Home extends Component {
     const response = await fetch(url)
     const responseData = await response.json()
 
+    console.log(responseData)
+
     if (response.ok === true) {
       const listFormattedData = this.convertObjectsDataIntoListItemsUsingForInMethod(
         responseData,
       )
+      console.log(listFormattedData)
       this.setState({
         dataList: listFormattedData,
         apiStatus: apiStatusConstants.success,
       })
+    } else {
+      this.setState({apiStatus: apiStatusConstants.failure})
+    }
+  }
+
+  onChangeSearchValue = event => {
+    if (event.target.value === '') {
+      this.setState({searchValue: null})
+    } else {
+      this.setState({searchValue: event.target.value.toLowerCase()})
     }
   }
 
@@ -250,14 +264,6 @@ class Home extends Component {
       }
     })
     return resultList
-  }
-
-  onChangeSearchValue = event => {
-    if (event.target.value === '') {
-      this.setState({searchValue: null})
-    } else {
-      this.setState({searchValue: event.target.value.toLowerCase()})
-    }
   }
 
   onClickSortAscending = () => {
@@ -333,7 +339,7 @@ class Home extends Component {
     }
 
     return (
-      <div className="status-tab-container">
+      <ul className="status-tab-container">
         {statusTabList.map(eachTab => (
           <CaseStatusTab
             key={eachTab.tabId}
@@ -341,7 +347,7 @@ class Home extends Component {
             countDetails={countDetailsConstants}
           />
         ))}
-      </div>
+      </ul>
     )
   }
 

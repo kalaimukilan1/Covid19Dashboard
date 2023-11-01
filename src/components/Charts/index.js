@@ -211,10 +211,7 @@ class Chats extends Component {
     }
 
     return (
-      <div
-        className={`lineChart-container ${dataKeyVal}-background `}
-        testid="lineChartsContainer"
-      >
+      <div className={`lineChart-container ${dataKeyVal}-background `}>
         <LineChart height={260} width={950} data={timelineData}>
           <XAxis dataKey="date" stroke={strokeColor} />
           <YAxis tickFormatter={this.dataFormatter} stroke={strokeColor} />
@@ -236,7 +233,10 @@ class Chats extends Component {
   }
 
   renderSpreadTrend = () => (
-    <ul className="sm-spread-trends-list-container">
+    <ul
+      className="sm-spread-trends-list-container"
+      testid="lineChartsContainer"
+    >
       {spreadsList.map(each => (
         <li key={each.id}>{this.spreadTrendCharts(each.id)}</li>
       ))}

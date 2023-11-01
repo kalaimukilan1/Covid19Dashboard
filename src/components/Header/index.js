@@ -28,18 +28,22 @@ class Header extends Component {
               COVID19<span className="covid19HeadingSpan">INDIA</span>
             </h1>
           </Link>
-          <div className="nav-link-container">
-            <Link to="/" className="nav-link">
-              <button type="button" className="nav-link-button">
-                Home
-              </button>
-            </Link>
-            <Link to="/about" className="nav-link">
-              <button type="button" className="nav-link-button">
-                About
-              </button>
-            </Link>
-          </div>
+          <ul className="nav-link-container">
+            <li>
+              <Link to="/" className="nav-link">
+                <button type="button" className="nav-link-button">
+                  Home
+                </button>
+              </Link>
+            </li>
+            <li>
+              <Link to="/about" className="nav-link">
+                <button type="button" className="nav-link-button">
+                  About
+                </button>
+              </Link>
+            </li>
+          </ul>
 
           <button
             className="nav-sm-button"
@@ -54,18 +58,22 @@ class Header extends Component {
         </div>
 
         <div className={`nav-link-sm-container ${smNavLink}`}>
-          <div>
-            <Link to="/" className="nav-link nav-link-sm ">
-              <button type="button" className="nav-link-button">
-                Home
-              </button>
-            </Link>
-            <Link to="/about" className="nav-link nav-link-sm ">
-              <button type="button" className="nav-link-button">
-                About
-              </button>
-            </Link>
-          </div>
+          <ul>
+            <li>
+              <Link to="/" className="nav-link nav-link-sm ">
+                <button type="button" className="nav-link-button">
+                  Home
+                </button>
+              </Link>
+            </li>
+            <li>
+              <Link to="/about" className="nav-link nav-link-sm ">
+                <button type="button" className="nav-link-button">
+                  About
+                </button>
+              </Link>
+            </li>
+          </ul>
 
           <button
             type="button"

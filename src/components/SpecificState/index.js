@@ -388,7 +388,7 @@ class SpecificState extends Component {
             <div>
               <p className="tested-count-para">Tested</p>
               <br />
-              <span className="tested-count-span">{tested}</span>
+              <p className="tested-count-heading">{tested}</p>
             </div>
           </div>
           <p className="last-updated-date">{displayLastUpdatedDate}</p>
