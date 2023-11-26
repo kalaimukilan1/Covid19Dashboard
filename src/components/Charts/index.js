@@ -235,7 +235,7 @@ class Chats extends Component {
   renderSpreadTrend = () => (
     <ul
       className="sm-spread-trends-list-container"
-      testid="lineChartsContainer"
+      data-testid="lineChartsContainer"
     >
       {spreadsList.map(each => (
         <li key={each.id}>{this.spreadTrendCharts(each.id)}</li>
@@ -245,7 +245,7 @@ class Chats extends Component {
 
   renderLoadingView = () => (
     <div
-      testid="timelinesDataLoader"
+      data-testid="timelinesDataLoader"
       className="specific-state-route-loader-container"
     >
       <Loader type="TailSpin" color="#007BFF" height="60px" width="60px" />

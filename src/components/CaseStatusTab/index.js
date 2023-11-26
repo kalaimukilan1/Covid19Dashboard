@@ -60,7 +60,7 @@ const CaseStatusTab = props => {
   }
 
   return (
-    <li testid={containerTestId} className="status-tab-card">
+    <li data-testid={containerTestId} className="status-tab-card">
       <button
         type="button"
         className={`status-tab-button ${tabTextColor} ${backgroundColor}`}

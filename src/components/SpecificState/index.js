@@ -318,11 +318,11 @@ class SpecificState extends Component {
     // Used activeTab name as CSS property for giving heading color
     return (
       <div>
+        <h1 className={`top-district-heading ${activeTab}`}>Top Districts</h1>
         <ul
           className="district-ul-container"
-          testid="topDistrictsUnorderedList"
+          data-testid="topDistrictsUnorderedList"
         >
-          <h1 className={`top-district-heading ${activeTab}`}>Top Districts</h1>
           {districtListData.map(eachDistrict => {
             if (eachDistrict[activeTab] !== 0) {
               return (
@@ -387,8 +387,7 @@ class SpecificState extends Component {
             </div>
             <div>
               <p className="tested-count-para">Tested</p>
-              <br />
-              <p className="tested-count-heading">{tested}</p>
+              <p className="tested-count-span">{tested}</p>
             </div>
           </div>
           <p className="last-updated-date">{displayLastUpdatedDate}</p>
@@ -408,7 +407,7 @@ class SpecificState extends Component {
     <div>
       <Header />
       <div
-        testid="stateDetailsLoader"
+        data-testid="stateDetailsLoader"
         className="specific-state-route-loader-container"
       >
         <Loader type="TailSpin" color="#007BFF" height="60px" width="60px" />
